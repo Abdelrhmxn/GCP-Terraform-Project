@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-node-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-node-app
+  template:
+    metadata:
+      labels:
+        app: my-node-app
+    spec:
+      containers:
+        - name: my-node-app
+          imagePullPolicy: Always
+          image: us-central1-docker.pkg.dev/abdelrhmxn-gcp-project/project-images/nodeapp
+          env:
+            - name: DBuser
+              value: "test"
+                #  valueFrom:
+                #secretKeyRef:
+                #  name: mongo-secret
+                     #  key: username
+            - name: DBpass
+              value: "12345"
+             #valueFrom:
+              #secretKeyRef:
+                #name: mongo-secret
+              # key: password
+            - name: DBhosts
+              value: "mongo-0.mongo,mongo-1.mongo,mongo-2.mongo"
+          ports:
+            - containerPort: 27017
+              name: mongo
+          

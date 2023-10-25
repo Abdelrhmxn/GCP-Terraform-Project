@@ -1,0 +1,73 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mongo
+spec:
+  serviceName: mongo
+  replicas: 3
+  selector:
+    matchLabels:
+      app: mongo
+  template:
+    metadata:
+      labels:
+        app: mongo
+        role: mongo
+        environment: test
+    spec:
+      serviceAccountName: monogo-service-account
+      containers:
+        - name: mongo
+          image: us-central1-docker.pkg.dev/abdelrhmxn-gcp-project/project-images/mongo-app:latest
+          args: ["--bind_ip_all", "--replSet","rs0","--auth", "--keyFile","/tmp/mykey" ]
+          env:
+            - name: MONGO_INITDB_ROOT_USERNAME
+              value: "test"
+              #valueFrom:
+              #  secretKeyRef:
+              #    name: mongo-secret
+              #    key: username
+            - name: MONGO_INITDB_ROOT_PASSWORD
+              value: "12345"
+              #valueFrom:
+              #  secretKeyRef:
+              #    name: mongo-secret
+              #    key: password
+            - name: MONGO_INITDB_DATABASE
+              value: "admin"        
+          ports:
+            - containerPort: 27017
+              name: mongo
+          volumeMounts:
+            - name: mongo-data
+              mountPath: /data/db
+        - name: mongo-sidecar
+          image: us-central1-docker.pkg.dev/abdelrhmxn-gcp-project/project-images/mongo-sidecar
+          env:
+            - name: MONGO_SIDECAR_POD_LABELS
+              value: "role=mongo,environment=test"
+            - name: KUBE_NAMESPACE
+              value: "default"
+            - name: MONGODB_USERNAME
+              value: "test"
+              #valueFrom:
+              #  secretKeyRef:
+              #    name: mongo-secret
+              #    key: username
+            - name: MONGODB_PASSWORD
+              value: "12345"
+              #valueFrom:
+              #  secretKeyRef:
+              #    name: mongo-secret
+              #    key: password
+            - name: MONGODB_DATABASE
+              value: "admin"
+  volumeClaimTemplates:
+    - metadata:
+        name: mongo-data
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        storageClassName: "standard-class"
+        resources:
+          requests:
+            storage: 1Gi
