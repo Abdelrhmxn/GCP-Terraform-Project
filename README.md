@@ -28,15 +28,15 @@ only.
 ```bash
 Terraform apply 
 ```
-<img src="https://github.com/Abdelrhmxn/GCP-Terraform-Project/assets/55556764/6160307f-780f-4ab3-8436-a3b7c79d0803" width="" height="" >
-<img src="https://github.com/Abdelrhmxn/GCP-Terraform-Project/assets/55556764/e5177928-49a7-4b16-9736-ff3bb9ec5fd1" width="" height="" >
-<img src="https://github.com/Abdelrhmxn/GCP-Terraform-Project/assets/55556764/be4912fb-95af-4dce-afbf-566890d3afdd" width="" height="" >
+<img src="https://github.com/Abdelrhmxn/GCP-Terraform-Project/assets/55556764/191bbbbf-20a5-4dd5-ac0d-c3f69967d419" width="" height="" >
+<img src="https://github.com/Abdelrhmxn/GCP-Terraform-Project/assets/55556764/09e87dc9-cef8-430a-9e51-c5be4fbc1537" width="" height="" >
+<img src="https://github.com/Abdelrhmxn/GCP-Terraform-Project/assets/55556764/504a9ead-1234-47c7-a4f7-ce4b1bfbb879" width="" height="" >
 
 2. Get management-vm credentials to SSH it using IAP
 ```bash
 gcloud compute ssh --zone "us-east1-b" "management-vm" --tunnel-through-iap --project "abdelrhmxn-gcp-project"
 ```
-<img src="https://github.com/Abdelrhmxn/GCP-Terraform-Project/assets/55556764/6ee7e981-d3c5-48ae-be74-8d136679b2d8" width="" height="" >
+<img src="https://github.com/Abdelrhmxn/GCP-Terraform-Project/assets/55556764/b6bfd60b-8286-4a58-91dc-05d7364f6ad3" width="" height="" >
 
 3. Setup VM
 - Download Kubectl and get-credentials of cluster
@@ -45,9 +45,9 @@ sudo apt-get install google-cloud-sdk-gke-gcloud-auth-plugin -y
 sudo apt-get  install kubectl -y
 gcloud container clusters get-credentials abdelrhmxn-gke-cluster --region us-central1 --project abdelrhmxn-gcp-project
 ```
-<img src="https://github.com/Abdelrhmxn/GCP-Terraform-Project/assets/55556764/5b37d498-d6c8-4af1-b0cc-d84e29fdd28f" width="" height="" >
-<img src="https://github.com/Abdelrhmxn/GCP-Terraform-Project/assets/55556764/3a407bc7-3965-4237-b73e-c51a443816a0" width="" height="" >
-<img src="https://github.com/Abdelrhmxn/GCP-Terraform-Project/assets/55556764/9acc7a8a-cc0a-44fc-9509-57ccc99e7f08" width="" height="" >
+<img src="https://github.com/Abdelrhmxn/GCP-Terraform-Project/assets/55556764/18ab2b16-7cc5-457d-ae25-e1b7b182a763" width="" height="" >
+<img src="https://github.com/Abdelrhmxn/GCP-Terraform-Project/assets/55556764/65842cda-a251-42a9-9b65-d62a3c31663d" width="" height="" >
+<img src="https://github.com/Abdelrhmxn/GCP-Terraform-Project/assets/55556764/6d6c0d6f-bf5c-47b2-901b-d7e1d1722e99" width="" height="" >
 
 
 - Download Docker
@@ -60,11 +60,11 @@ echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] 
 sudo apt update
 sudo apt install docker-ce docker-ce-cli containerd.io
 ```
-<img src="https://github.com/Abdelrhmxn/GCP-Terraform-Project/assets/55556764/d76999e9-2055-468c-96aa-ce78a60b72f8" width="" height="" >
-<img src="https://github.com/Abdelrhmxn/GCP-Terraform-Project/assets/55556764/efb07613-2759-45b4-a6f4-472ec51f60bd" width="" height="" >
-<img src="https://github.com/Abdelrhmxn/GCP-Terraform-Project/assets/55556764/9baeb10a-573e-46e8-b9bc-1a0b74481343" width="" height="" >
-<img src="https://github.com/Abdelrhmxn/GCP-Terraform-Project/assets/55556764/fd1baffd-a56e-4bea-80e0-5e82833390b7" width="" height="" >
-<img src="https://github.com/Abdelrhmxn/GCP-Terraform-Project/assets/55556764/c93882bb-0d6f-43e3-969d-cdf1ecc55e1a" width="" height="" >
+<img src="https://github.com/Abdelrhmxn/GCP-Terraform-Project/assets/55556764/37bf4645-4258-4c71-bfd0-669763a3ef18" width="" height="" >
+<img src="https://github.com/Abdelrhmxn/GCP-Terraform-Project/assets/55556764/7d0fef37-57ca-4920-8213-1e620ca50b79" width="" height="" >
+<img src="https://github.com/Abdelrhmxn/GCP-Terraform-Project/assets/55556764/ae816aa1-30a2-4c8f-9c9f-d5a3c754ff17" width="" height="" >
+<img src="https://github.com/Abdelrhmxn/GCP-Terraform-Project/assets/55556764/23bd8145-0293-4051-8e23-868385f3550f" width="" height="" >
+<img src="https://github.com/Abdelrhmxn/GCP-Terraform-Project/assets/55556764/f32c0dca-799a-4f8e-8907-5d784dd4a7a0" width="" height="" >
 
 - Complete Authentication with Artifact Registry
 ```bash
@@ -74,13 +74,13 @@ gcloud auth print-access-token --impersonate-service-account vm-serviceaccount@a
 ```bash
 gcloud compute scp --zone "us-east1-b"  --recurse manifest/* abdelrhman@management-vm:/home/abdelrhman --tunnel-through-iap --project "abdelrhmxn-gcp-project"
 ```
-<img src="https://github.com/Abdelrhmxn/GCP-Terraform-Project/assets/55556764/5dbbfb6e-025e-4a1f-9b64-5069be149361" width="" height="" >
+<img src="https://github.com/Abdelrhmxn/GCP-Terraform-Project/assets/55556764/e2cec0ff-177e-4956-89cc-ab26c197593b" width="" height="" >
 
 4. Dockerize your applications
 ```bash
  docker build -t [IMAGE NAME] .  
 ```
-<img src="https://github.com/Abdelrhmxn/GCP-Terraform-Project/assets/55556764/ae7eab93-c57f-4839-9c9d-008196f37753" width="" height="" >
+<img src="https://github.com/Abdelrhmxn/GCP-Terraform-Project/assets/55556764/fd9493a8-5b1c-4225-b7c3-5578d8b6a4d4" width="" height="" >
 
 5. Push them to Artifact Registry
 ```bash
@@ -88,7 +88,7 @@ docker tag [IMAGE NAME] [artifactrepositorylocation/IMAGE-NAME]
 gcloud auth configure-docker us-central1-docker.pkg.dev
 docker push [NEW IMAGE NAME]
 ```
-<img src="https://github.com/Abdelrhmxn/GCP-Terraform-Project/assets/55556764/e98000ac-00fa-4dfa-926d-7d05e440923b" width="" height="" >
+<img src="https://github.com/Abdelrhmxn/GCP-Terraform-Project/assets/55556764/81b40087-cee1-4883-ad69-fe59158b82a8" width="" height="" >
 
 6. Apply manifest files
 ```bash
@@ -101,6 +101,6 @@ kubectl apply -f volume.yml
 kubectl apply -f mongodb.yml
 kubectl apply -f App.yml
 ```
-<img src="https://github.com/Abdelrhmxn/GCP-Terraform-Project/assets/55556764/9e3c5622-f28b-4e13-83d1-192f6d500a25" width="" height="" >
-<img src="https://github.com/Abdelrhmxn/GCP-Terraform-Project/assets/55556764/9e515345-12fc-494b-bcf8-f3e5ac6a745a" width="" height="" >
-<img src="https://github.com/Abdelrhmxn/GCP-Terraform-Project/assets/55556764/9ac05257-0e58-46c6-8bb9-aafe71669b26" width="" height="" >
+<img src="https://github.com/Abdelrhmxn/GCP-Terraform-Project/assets/55556764/c8529b43-ec05-499e-abc4-c6630ce9a7fa" width="" height="" >
+<img src="https://github.com/Abdelrhmxn/GCP-Terraform-Project/assets/55556764/ac993c4e-3912-4e93-97bd-10d497b92eee" width="" height="" >
+<img src="https://github.com/Abdelrhmxn/GCP-Terraform-Project/assets/55556764/70099e6d-921b-417e-99b6-93afc2b9c1a0" width="" height="" >
